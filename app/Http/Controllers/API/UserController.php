@@ -58,12 +58,7 @@ public function choisirFiliere(Request $request)
                 'message' => 'Filière enregistrée avec succès',
                 'filiere' => $filiere->libelle, // Ajoutez le libellé de la filière ici
             ], 200);
-        } else {
-            return response()->json([
-                'success' => false,
-                'error' => 'La filière choisie n\'existe pas',
-            ], 404);
-        }
+        } 
     } else {
         return response()->json([
             'success' => false,
@@ -71,7 +66,6 @@ public function choisirFiliere(Request $request)
         ], 401);
     }
 }
-
 //public function savefiliere(Request $request)
 //{
     //$this->middleware('auth:sanctum');
@@ -95,6 +89,4 @@ public function choisirFiliere(Request $request)
         //return response()->json(['error' => 'User not authenticated'], 401);
     //}
 //}
-
-
 }
