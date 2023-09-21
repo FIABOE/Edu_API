@@ -61,7 +61,7 @@ class AuthController extends Controller
         $token = $user->createToken('Myapp')->plainTextToken; // Génération du jeton d'accès
         $user->update(['remember_token' => $token]); // Associer le jeton à l'utilisateur dans la base de données
        
-        $success['token'] = $user->createToken('Myapp')->plainTextToken;
+        $success['token'] = $token;
         $success['name'] = $user->name;
         $success['surname'] = $user->surname;
         $success['dateNais'] = $user->dateNais;
