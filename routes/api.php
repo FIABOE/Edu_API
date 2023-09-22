@@ -33,11 +33,21 @@ Route::get('/moderators', [ModeratorController::class, 'getAllModerators']);
 // Routes nécessitant l'authentification (utilisateur normal)
 Route::middleware('auth:sanctum')->group(function () {
     Route::get('/user', function () {
-        return auth()->user();
+        $user = auth()->user();
+        return response()->json([
+            'user' => $user,
+        ]);
     });
-
+    //Route::middleware('auth:api')->get('/user', function () {
+        //$user = auth()->user();
+        //return response()->json([
+            //'user' => $user,
+        //]);
+    //});
+    
     //Route::post('/choisir-filiere', 'API\UserController@choisirFiliere');
     Route::post('/choisir-filiere', [UserController::class, 'choisirFiliere']);
+    Route::post('/choisir-objectif', [UserController::class, 'choisirObjectif']);
 
 
     Route::post('/objectif', [UserController::class, 'saveObjectif']);
