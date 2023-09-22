@@ -63,6 +63,12 @@ class User extends Authenticatable
     {
         return $this->belongsTo(Objectif::class, 'objectif_id');
     }
+    
+    public function profil()
+    {
+        return $this->hasOne(Profil::class);
+    }
+
 
     public function isAdmin()
     {

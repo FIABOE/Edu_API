@@ -8,6 +8,7 @@ use App\Http\Controllers\CoursController;
 use App\Http\Controllers\ModeratorController;
 use App\Http\Controllers\QuizController;
 use App\Http\Controllers\ObjectifController;
+use App\Http\Controllers\ProfilController;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -38,13 +39,8 @@ Route::middleware('auth:sanctum')->group(function () {
             'user' => $user,
         ]);
     });
-    //Route::middleware('auth:api')->get('/user', function () {
-        //$user = auth()->user();
-        //return response()->json([
-            //'user' => $user,
-        //]);
-    //});
-    
+
+   
     //Route::post('/choisir-filiere', 'API\UserController@choisirFiliere');
     Route::post('/choisir-filiere', [UserController::class, 'choisirFiliere']);
     Route::post('/choisir-objectif', [UserController::class, 'choisirObjectif']);
@@ -60,5 +56,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('objectifs', ObjectifController::class);
     Route::resource('cours', CoursController::class);
     Route::resource('quizzes', QuizController::class);
+    Route::resource('/profil', ProfilController::class);
 });
  

@@ -11,9 +11,9 @@ return new class extends Migration
      */
     public function up()
 {
-    Schema::table('filieres', function (Blueprint $table) {
-        $table->dropUnique('filieres_libelle_unique'); // Le nom de l'index unique
-    });
+    //Schema::table('filieres', function (Blueprint $table) {
+       // $table->dropUnique('filieres_libelle_unique'); // Le nom de l'index unique
+    //});
 }
 
 
@@ -22,8 +22,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('libelle_column_in_filieres', function (Blueprint $table) {
+        //Schema::table('libelle_column_in_filieres', function (Blueprint $table) {
             //
-        });
+        //});
     }
 };
