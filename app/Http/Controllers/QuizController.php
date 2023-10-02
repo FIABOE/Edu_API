@@ -158,4 +158,37 @@ class QuizController extends Controller
     ], 200);
 }
 
+
+public function getQuizByFiliere($filiere_id)
+{
+    try {
+        $quizs = Quiz::where('filiere_id', $filiere_id)->get();
+
+        if ($quizs->isEmpty()) {
+            info('Aucun quiz trouvé pour cette filière.');
+            return response()->json([
+                'success' => true,
+                'message' => 'Aucun quiz trouvé pour cette filière.',
+                'data' => [],
+            ], 200);
+        }
+
+        return response()->json([
+            'success' => true,
+            'data' => $quizs,
+        ], 200);
+    } catch (\Exception $e) {
+        error_log($e);
+        // Gérez l'erreur ici
+        // Vous pouvez enregistrer l'erreur, envoyer une réponse d'erreur personnalisée, etc.
+        return response()->json([
+            'success' => false,
+            'message' => 'Une erreur s\'est produite lors de la récupération des quiz.',
+            'error' => $e->getMessage(),
+        ], 500);
+    }
+}
+
+
+
 }

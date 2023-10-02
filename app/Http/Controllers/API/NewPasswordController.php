@@ -23,9 +23,9 @@ class NewPasswordController extends Controller
         );
         
         if ($status == Password::RESET_LINK_SENT){
-            return [
+            return response()->json([
                 'message' => 'Password reset link sent successfully',
-            ];
+            ]);
         }
         throw ValidationException::withMessages([   
             'email' => [trans($status)],
@@ -52,12 +52,12 @@ class NewPasswordController extends Controller
         );
         
         if ($status == Password::PASSWORD_RESET){
-            return response([
+            return response()->json([
                 'message'=> 'Password reset successfully'
             ]);
         }
-        return response([
+        return response()->json([
             'message'=> __($status)
-        ],500);
+        ], 500);
     }
 }

@@ -30,6 +30,7 @@ Route::controller(NewPasswordController::class)->group(function () {
 Route::post('/register-moderateur', [ModeratorController::class, 'register']);
 Route::get('/moderators', [ModeratorController::class, 'getAllModerators']);
 
+Route::middleware('auth:sanctum')->get('/user/profile', [ProfilController::class, 'getUserProfile']);
 
 // Routes nécessitant l'authentification (utilisateur normal)
 Route::middleware('auth:sanctum')->group(function () {
@@ -56,6 +57,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::resource('objectifs', ObjectifController::class);
     Route::resource('cours', CoursController::class);
     Route::resource('quizzes', QuizController::class);
+    Route::get('/quiz/{filiere_id}', [QuizController::class, 'getQuizByFiliere']);
     Route::resource('/profil', ProfilController::class);
 });
  
